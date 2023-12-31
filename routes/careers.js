@@ -25,5 +25,13 @@ router.post("/henlo", async (req, res) => {
     res.status(500).json({ msg: err });
   }
 });
+router.delete("/henlo/deleteAll", async (req, res) => {
+  try {
+    const deletedTodo = await careers.deleteMany({});
+    res.json({ message: "Todo deleted successfully", deletedTodo });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 export default router;
